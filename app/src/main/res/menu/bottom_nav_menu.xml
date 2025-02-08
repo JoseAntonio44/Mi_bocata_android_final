@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_pedir"
+        android:icon="@drawable/bolsa"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/nav_pedidos"
+        android:icon="@drawable/list"
+        android:title="Pedidos" />
+
+    <item
+        android:id="@+id/nav_bocatas"
+        android:icon="@drawable/calendar"
+        android:title="Bocatas" />
+    <item
+        android:id="@+id/nav_perfil"
+        android:icon="@drawable/perfil"
+        android:title="Perfil" />
+</menu>

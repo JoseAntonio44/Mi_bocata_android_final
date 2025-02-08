@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_pedir">
+    <fragment
+        android:id="@+id/nav_pedir"
+        android:name="com.jose.mi_bocadillo_final.Fragments.pedirBocadillo.PedirBocadilloFragment"
+        android:label="fragment_pedir_bocadillo"
+        tools:layout="@layout/fragment_pedir_bocadillo" />
+    <fragment
+        android:id="@+id/nav_bocatas"
+        android:name="com.jose.mi_bocadillo_final.Fragments.listaBocadillos.ListaBocadillosFragment"
+        android:label="ListaBocadillosFragment" />
+    <fragment
+        android:id="@+id/nav_pedidos"
+        android:name="com.jose.mi_bocadillo_final.Fragments.pedidos.PedidosFragment"
+        android:label="PedidosFragment" />
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.jose.mi_bocadillo_final.Fragments.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+</navigation>
