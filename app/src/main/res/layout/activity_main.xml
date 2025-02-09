@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/usuario"
-        android:layout_width="343dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="34dp"
         android:layout_marginTop="264dp"
@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/botonLogin"
-        android:layout_width="343dp"
+        android:layout_width="350dp"
         android:layout_height="56dp"
         android:layout_marginTop="31dp"
         android:backgroundTint="#FBBC05"
