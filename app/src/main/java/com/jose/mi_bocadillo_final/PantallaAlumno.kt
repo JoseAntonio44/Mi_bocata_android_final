@@ -1,5 +1,6 @@
 package com.jose.mi_bocadillo_final
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +13,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jose.mi_bocadillo_final.databinding.ActivityPantallaAlumnoBinding
-
 class PantallaAlumno : AppCompatActivity() {
 
-private lateinit var binding: ActivityPantallaAlumnoBinding;
+
+    private lateinit var binding: ActivityPantallaAlumnoBinding;
+    private lateinit var authManager: AuthManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +27,19 @@ private lateinit var binding: ActivityPantallaAlumnoBinding;
         binding = ActivityPantallaAlumnoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        authManager = AuthManager()
+
+
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        val logoutButton = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.botonCerrarSesion)
+
+        logoutButton.setOnClickListener {
+            authManager.cerrarSesion()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val navView: BottomNavigationView = binding.bottomNavigationView
 

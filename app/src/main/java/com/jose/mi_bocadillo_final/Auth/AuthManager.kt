@@ -8,7 +8,6 @@ class AuthManager {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    // Iniciar sesión con correo y contraseña
     fun iniciarSesion(email: String, password: String, onResult: (Boolean, String?) -> Unit) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -22,18 +21,16 @@ class AuthManager {
             }
     }
 
-    // Cerrar sesión
     fun cerrarSesion() {
         auth.signOut()
         Log.d("Auth", "Usuario ha cerrado sesión")
     }
 
-    // Verificar si hay una sesión activa
     fun sesionActiva(): Boolean {
         return auth.currentUser != null
     }
 
-    // Obtener el usuario actual
+
     fun obtenerUsuarioActual(): String? {
         return auth.currentUser?.email
     }

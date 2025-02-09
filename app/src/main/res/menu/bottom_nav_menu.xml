@@ -18,4 +18,5 @@
         android:id="@+id/nav_perfil"
         android:icon="@drawable/perfil"
         android:title="Perfil" />
+
 </menu>
