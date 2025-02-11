@@ -22,23 +22,37 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="288dp"
         android:layout_marginEnd="34dp"
         android:background="@drawable/edit_text"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botonLogin"
+        android:layout_width="350dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FBBC05"
+        android:text="Login"
+        android:textSize="16sp"
+        app:cornerRadius="5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contrasena" />
 
     <EditText
         android:id="@+id/contrasena"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="34dp"
         android:background="@drawable/edit_text"
         android:ems="10"
@@ -46,22 +60,9 @@
         android:hint="Contraseña"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario" />
-
-    <Button
-        android:id="@+id/botonLogin"
-        android:layout_width="350dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="31dp"
-        android:backgroundTint="#FBBC05"
-        android:text="Login"
-        android:textSize="16sp"
-        app:cornerRadius="5sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contrasena" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
@@ -72,13 +73,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView12"
+    <ImageButton
+        android:id="@+id/botonHuella"
         android:layout_width="wrap_content"
-        android:layout_height="62dp"
-        android:layout_marginTop="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="77dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonLogin"
-        app:srcCompat="@drawable/google" />
+        app:srcCompat="@drawable/huella" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
