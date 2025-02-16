@@ -5,11 +5,12 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.listaBocadillos.ListaBocadillosFragment">
+    tools:context=".Fragments.bocadillosSemana.ListaBocadillosFragment">
 
-    <GridView
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="0dp"
-        android:layout_height="784dp"
+        android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
