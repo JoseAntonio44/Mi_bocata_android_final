@@ -33,15 +33,14 @@ class PedirBocadilloFragment : Fragment() {
 
         pedirBocadilloViewModel.bocadillos.observe(viewLifecycleOwner, Observer { bocadillos ->
             if (bocadillos != null && bocadillos.isNotEmpty()) {
-                val primerBocadillo = bocadillos[0]
-                val descripcion = primerBocadillo.descripcion
+                val primerBocadillo = bocadillos.find {it.tipo == "caliente" }
+                val descripcion = primerBocadillo?.descripcion
                 listadoBocadillos.text = "Descripción del primer bocadillo: $descripcion"
-                Log.d("App", "Bocadillos observados: ${bocadillos.size}")
             } else {
                 listadoBocadillos.text = "No hay bocadillos disponibles"
             }
-
         })
+
 
         pedirBocadilloViewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
             if (!errorMessage.isNullOrEmpty()) {

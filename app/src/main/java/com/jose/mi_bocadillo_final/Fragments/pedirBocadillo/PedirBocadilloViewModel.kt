@@ -15,12 +15,13 @@ class PedirBocadilloViewModel : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
+
     fun fetchBocadillos() {
         Log.d("App", "FETCH")
         viewModelScope.launch {
             try {
                 val response = RetrofitConnect.api.getBocadillos()
-                _bocadillos.value = response.values.toList()  // Convierte el mapa a lista
+                _bocadillos.value = response.values.toList()
             } catch (e: Exception) {
                 _errorMessage.value = "Error: ${e.message}"
             }
