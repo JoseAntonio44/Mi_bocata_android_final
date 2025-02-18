@@ -40,6 +40,7 @@ class PedirBocadilloFragment : Fragment() {
             } else {
                 listadoBocadillos.text = "No hay bocadillos disponibles"
             }
+
         })
 
         pedirBocadilloViewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
