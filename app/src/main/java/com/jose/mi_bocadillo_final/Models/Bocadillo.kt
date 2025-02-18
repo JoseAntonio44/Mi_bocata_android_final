@@ -1,8 +1,8 @@
 package com.jose.mi_bocadillo_final.Models
 
 data class Bocadillo(
-    val id: Int,
-    val nombre: String,
-    val precio: Double,
+    val coste: Double,
+    val descripcion: String,
+    val lista_alergenos: List<String>,
     val tipo: String
 )

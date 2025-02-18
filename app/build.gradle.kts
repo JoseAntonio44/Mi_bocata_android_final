@@ -67,6 +67,7 @@ dependencies {
 
     // Logging para depuración de las solicitudes HTTP
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
