@@ -25,8 +25,8 @@ class PedirBocadilloViewModel : ViewModel() {
     private val _bocadillos = MutableLiveData<List<Bocadillo>>()
     val bocadillos: LiveData<List<Bocadillo>> get() = _bocadillos
 
-    private val _pedidos = MutableLiveData<List<Pedido>>()
-    val pedidos: LiveData<List<Pedido>> get() = _pedidos
+    private val _pedidoExitoso = MutableLiveData<Boolean>()
+    val pedidoExitoso: LiveData<Boolean> get() = _pedidoExitoso
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
@@ -62,9 +62,10 @@ class PedirBocadilloViewModel : ViewModel() {
                 try {
                     val response = RetrofitConnect.api.realizarPedido(pedido)
                     if (response.isSuccessful) {
-                        _errorMessage.value = "Pedido realizado con éxito"
+                        _pedidoExitoso.value = true
                     } else {
-                        _errorMessage.value = "Error en la petición: ${response.errorBody()?.string()}"
+                        _pedidoExitoso.value = false
+                        _errorMessage.value = "Error: ${response.message()}"
                     }
                 } catch (e: Exception) {
                     _errorMessage.value = "Error: ${e.message}"

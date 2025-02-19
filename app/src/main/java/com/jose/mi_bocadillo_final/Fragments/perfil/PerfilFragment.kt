@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.jose.mi_bocadillo_final.AuthManager
 import com.jose.mi_bocadillo_final.databinding.FragmentPerfilBinding
 
 
@@ -35,6 +36,16 @@ class PerfilFragment : Fragment() {
             textView.text = it
         }*/
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val nombreTextView = binding.Nombre
+        val apellidosTextView = binding.Apellidos
+        val correoTextView = binding.correo
+        val cursoTextView = binding.curso
+
+
     }
 
     override fun onDestroyView() {

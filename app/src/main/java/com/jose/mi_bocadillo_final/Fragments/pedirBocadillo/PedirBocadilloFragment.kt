@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.jose.mi_bocadillo_final.AuthManager
 import com.jose.mi_bocadillo_final.databinding.FragmentPedirBocadilloBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -72,18 +71,12 @@ class PedirBocadilloFragment : Fragment() {
                 botonPedirFrio.setOnClickListener {
                     bocadilloFrio?.let { bocadillo ->
                         pedirBocadilloViewModel.hacerPedido(bocadilloFrio)
-                        mensaje.text = "Pedido realizado del bocadillo ${bocadilloFrio.descripcion} con éxito"
-                        mensaje.visibility = View.VISIBLE
-                        botonBorrarMensaje.visibility = View.VISIBLE
                     }
                 }
 
                 botonPedirCaliente.setOnClickListener {
                     bocadilloCaliente?.let { bocadillo ->
                         pedirBocadilloViewModel.hacerPedido(bocadilloCaliente)
-                        mensaje.text = "${bocadilloCaliente.descripcion} pedido con éxito!"
-                        mensaje.visibility = View.VISIBLE
-                        botonBorrarMensaje.visibility = View.VISIBLE
 
                     }
                 }
@@ -95,11 +88,22 @@ class PedirBocadilloFragment : Fragment() {
 
 
         })
-
+        pedirBocadilloViewModel.pedidoExitoso.observe(viewLifecycleOwner, Observer { pedidoExitoso ->
+            if (pedidoExitoso) {
+                mensaje.text = "Pedido realizado con éxito"
+                mensaje.visibility = View.VISIBLE
+                botonBorrarMensaje.visibility = View.VISIBLE
+            }
+            else {
+                mensaje.text = "Error al realizar el pedido"
+                mensaje.visibility = View.VISIBLE
+                botonBorrarMensaje.visibility = View.VISIBLE
+            }
+        })
 
         pedirBocadilloViewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
             if (!errorMessage.isNullOrEmpty()) {
-                nombreBocadilloFrio.text = errorMessage
+                mensaje.text = errorMessage
             }
         })
     }
