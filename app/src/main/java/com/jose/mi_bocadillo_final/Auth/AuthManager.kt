@@ -2,6 +2,8 @@ package com.jose.mi_bocadillo_final
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.jose.mi_bocadillo_final.Models.Usuario
 
 class AuthManager {
 
@@ -31,7 +33,8 @@ class AuthManager {
     }
 
 
-    fun obtenerUsuarioActual(): String? {
-        return auth.currentUser?.email
+    fun obtenerUsuarioActual(): FirebaseUser? {
+        return auth.currentUser
     }
+
 }

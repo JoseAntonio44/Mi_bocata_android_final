@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.jose.mi_bocadillo_final.AuthManager
 import com.jose.mi_bocadillo_final.databinding.FragmentPedirBocadilloBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -17,6 +18,7 @@ class PedirBocadilloFragment : Fragment() {
     private val pedirBocadilloViewModel: PedirBocadilloViewModel by viewModels()
     private var _binding: FragmentPedirBocadilloBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,9 +40,12 @@ class PedirBocadilloFragment : Fragment() {
         val nombreBocadilloCaliente = binding.nombreCaliente
         val precioBocadilloCaliente = binding.precioCaliente
         val botonPedirCaliente = binding.botonPedirCaliente
+        val mensaje = binding.mensajePedido
+        val botonBorrarMensaje = binding.botonBorrarMensaje
 
         // Obtener el día actual en formato "lunes", "martes", etc.
         val diaActual = SimpleDateFormat("EEEE", Locale("es", "ES")).format(Date()).lowercase()
+
 
         pedirBocadilloViewModel.bocadillos.observe(viewLifecycleOwner, Observer { bocadillos ->
             if (bocadillos != null && bocadillos.isNotEmpty()) {
@@ -64,8 +69,33 @@ class PedirBocadilloFragment : Fragment() {
                     nombreBocadilloCaliente.text = "No disponible"
                     precioBocadilloCaliente.text = ""
                 }
+                botonPedirFrio.setOnClickListener {
+                    bocadilloFrio?.let { bocadillo ->
+                        pedirBocadilloViewModel.hacerPedido(bocadilloFrio)
+                        mensaje.text = "Pedido realizado del bocadillo ${bocadilloFrio.descripcion} con éxito"
+                        mensaje.visibility = View.VISIBLE
+                        botonBorrarMensaje.visibility = View.VISIBLE
+                    }
+                }
+
+                botonPedirCaliente.setOnClickListener {
+                    bocadilloCaliente?.let { bocadillo ->
+                        pedirBocadilloViewModel.hacerPedido(bocadilloCaliente)
+                        mensaje.text = "${bocadilloCaliente.descripcion} pedido con éxito!"
+                        mensaje.visibility = View.VISIBLE
+                        botonBorrarMensaje.visibility = View.VISIBLE
+
+                    }
+                }
+                botonBorrarMensaje.setOnClickListener{
+                    mensaje.visibility = View.GONE
+                    botonBorrarMensaje.visibility = View.GONE
+                }
             }
+
+
         })
+
 
         pedirBocadilloViewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
             if (!errorMessage.isNullOrEmpty()) {
