@@ -29,6 +29,10 @@ class PantallaAlumno : AppCompatActivity() {
 
         authManager = AuthManager()
 
+        val user = binding.user
+
+        user.text = authManager.obtenerUsuarioActual()?.email ?: "Usuario no autenticado"
+
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
