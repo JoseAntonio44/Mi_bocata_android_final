@@ -4,48 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.jose.mi_bocadillo_final.AuthManager
+import androidx.fragment.app.viewModels
 import com.jose.mi_bocadillo_final.databinding.FragmentPerfilBinding
-
 
 class PerfilFragment : Fragment() {
 
     private var _binding: FragmentPerfilBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private val perfilViewModel: PerfilViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val PerfilFragmentViewModel =
-            ViewModelProvider(this).get(PerfilViewModel::class.java)
-
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-
-        /*val textView: TextView = binding.textDashboard
-        PerfilFragmentViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val nombreTextView = binding.Nombre
-        val apellidosTextView = binding.Apellidos
-        val correoTextView = binding.correo
-        val cursoTextView = binding.curso
 
+        perfilViewModel.cargarUsuarioLogueado()
 
+        perfilViewModel.usuario.observe(viewLifecycleOwner) { usuario ->
+            if (usuario != null) {
+                binding.Nombre.text = usuario.nombre
+                binding.Apellidos.text = usuario.apellidos
+                binding.correo.text = usuario.email
+                binding.curso.text = usuario.curso
+            } else {
+                binding.Nombre.text = "Usuario no encontrado"
+            }
+        }
     }
 
     override fun onDestroyView() {
