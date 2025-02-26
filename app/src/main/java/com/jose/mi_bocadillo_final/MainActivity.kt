@@ -10,6 +10,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.jose.mi_bocadillo_final.PantallaAdmin.PantallaAdmin
 import com.jose.mi_bocadillo_final.ViewModels.MainActivityViewModel
 import com.jose.mi_bocadillo_final.databinding.ActivityMainBinding
 
@@ -28,10 +29,25 @@ class MainActivity : AppCompatActivity() {
         val biometricButton = binding.botonHuella
 
 
-        //Mira si hay una sesión Activa
+        // Verificar si hay sesión activa
         if (authManager.sesionActiva()) {
-            navegarPantallaPrincipal()
+            val currentUser = authManager.obtenerUsuarioActual()
+            if (currentUser != null) {
+                currentUser.email?.let { viewModel.obtenerUsuarioPorEmail(it) }
+                viewModel.usuario.observe(this) { user ->
+                    if (user != null) {
+                        authManager.guardarUsuario(user)
+                        if (user.rol == "admin") {
+                            navegarPantallaAdmin()
+                        } else if (user.rol == "alumno") {
+                            navegarPantallaPrincipal()
+                        }
+                    }
+                }
+            }
         }
+
+
 
         binding.botonLogin.setOnClickListener {
             val email = binding.usuario.text.toString()
@@ -49,6 +65,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
+
+
         biometricButton.setOnClickListener {
             AuthenticateHuella { auth ->
                 if (auth) {
@@ -68,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 authManager.guardarUsuario(user)
                 Toast.makeText(this, "Bienvenido ${user.rol}", Toast.LENGTH_SHORT).show()
                 if (user.rol == "admin") {
-                    navegarPantallaPrincipal()
+                    navegarPantallaAdmin()
                 }else if (user.rol == "alumno") {
                     navegarPantallaPrincipal()
                 }
@@ -80,6 +98,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun navegarPantallaPrincipal() {
         startActivity(Intent(this, PantallaAlumno::class.java))
+        finish()
+    }
+
+    private fun navegarPantallaAdmin() {
+        startActivity(Intent(this, PantallaAdmin::class.java))
         finish()
     }
 

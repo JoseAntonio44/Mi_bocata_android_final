@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,25 +14,28 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/Descripcion"
+            android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bocadillo"
+            android:text="Nombre"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/Fecha"
+            android:id="@+id/txtApellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
-            android:textSize="14sp" />
+            android:text="Apellidos"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/Precio"
+            android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Precio"
-            android:textSize="14sp" />
+            android:text="Email"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_dark" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -31,19 +31,16 @@ class PedidosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Configurar el RecyclerView
         binding.recyclerViewPedidos.layoutManager = LinearLayoutManager(context)
         pedidoAdapter = PedidoAdapter()
         binding.recyclerViewPedidos.adapter = pedidoAdapter
 
-        // Observar cambios en los pedidos
         pedidoViewModel.pedidos.observe(viewLifecycleOwner, Observer { pedidos ->
             if (pedidos != null) {
                 pedidoAdapter.submitList(pedidos)
             }
         })
 
-        // Cargar los pedidos
         pedidoViewModel.cargarPedidos()
     }
 

@@ -57,6 +57,7 @@ class PedirBocadilloFragment : Fragment() {
             authManager.cerrarSesion()
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
+            requireActivity().finish()
         }
 
         pedirBocadilloViewModel.bocadillos.observe(viewLifecycleOwner, Observer { bocadillos ->

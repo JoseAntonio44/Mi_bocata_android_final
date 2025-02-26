@@ -14,9 +14,9 @@ class PedidoAdapter :
     ListAdapter<Pedido, PedidoAdapter.PedidoViewHolder>(PedidoDiffCallback()) {
 
     class PedidoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val descripcion: TextView = view.findViewById(R.id.txtDescripcion)
-        val fecha: TextView = view.findViewById(R.id.txtFecha)
-        val precio: TextView = view.findViewById(R.id.txtPrecio)
+        val descripcion: TextView = view.findViewById(R.id.Descripcion)
+        val fecha: TextView = view.findViewById(R.id.Fecha)
+        val precio: TextView = view.findViewById(R.id.Precio)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidoViewHolder {
@@ -31,15 +31,12 @@ class PedidoAdapter :
         holder.precio.text = "Precio: ${pedido.precio}€"
     }
 
-    //DiffUtil para comparar los elementos y saber cuándo actualizar
     class PedidoDiffCallback : DiffUtil.ItemCallback<Pedido>() {
         override fun areItemsTheSame(oldItem: Pedido, newItem: Pedido): Boolean {
-            //Comparar por ID o cualquier otro campo único
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Pedido, newItem: Pedido): Boolean {
-            //Comparar el contenido completo del pedido
             return oldItem == newItem
         }
     }
