@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val biometricButton = binding.botonHuella
+
 
         //Mira si hay una sesión Activa
         if (authManager.sesionActiva()) {
@@ -47,6 +49,16 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
+        biometricButton.setOnClickListener {
+            AuthenticateHuella { auth ->
+                if (auth) {
+                    val intent = Intent(this, PantallaAlumno::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+
+        SetupBiometricAuth()
     }
 
     private fun obtenerDatosUsuario(email: String) {
