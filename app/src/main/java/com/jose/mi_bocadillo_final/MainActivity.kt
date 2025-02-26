@@ -6,6 +6,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import com.jose.mi_bocadillo_final.ViewModels.MainActivityViewModel
 import com.jose.mi_bocadillo_final.databinding.ActivityMainBinding
 
@@ -65,5 +69,39 @@ class MainActivity : AppCompatActivity() {
     private fun navegarPantallaPrincipal() {
         startActivity(Intent(this, PantallaAlumno::class.java))
         finish()
+    }
+
+    private var canAutenticate = false
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+
+    private fun SetupBiometricAuth() {
+
+        val biometricManager = BiometricManager.from(this)
+
+        val canAuthenticate = biometricManager.canAuthenticate(Authenticators.BIOMETRIC_STRONG)
+
+        if (canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS) {
+            canAutenticate = true
+
+            promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Iniciar Sesión con Huella")
+                .setDescription("Autenticación Biométrica")
+                .setAllowedAuthenticators(Authenticators.BIOMETRIC_STRONG)
+                .setNegativeButtonText("Cancelar")
+                .build()
+        }
+    }
+
+    private fun AuthenticateHuella(auth: (auth: Boolean) -> Unit) {
+        if (canAutenticate){
+            BiometricPrompt(this, ContextCompat.getMainExecutor(this), object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    auth(true)
+                }
+            }).authenticate(promptInfo)
+        }else{
+            auth(true)
+        }
     }
 }

@@ -20,9 +20,9 @@ class ListaBocadillosViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = RetrofitConnect.api.getBocadillos()
-                print(response.listIterator(0))
+                //print(response.listIterator(0))
 
-                _bocatas.value = response
+               // _bocatas.value = response
             } catch (e: Exception) {
                 _errorMessage.value = e.message
             }
