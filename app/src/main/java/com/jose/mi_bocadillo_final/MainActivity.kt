@@ -49,8 +49,13 @@ class MainActivity : AppCompatActivity() {
         viewModel.obtenerUsuarioPorEmail(email)
         viewModel.usuario.observe(this) { user ->
             if (user != null) {
-                Toast.makeText(this, "Bienvenido ${user.nombre}", Toast.LENGTH_SHORT).show()
-                navegarPantallaPrincipal()
+                authManager.guardarUsuario(user)
+                Toast.makeText(this, "Bienvenido ${user.rol}", Toast.LENGTH_SHORT).show()
+                if (user.rol == "admin") {
+                    navegarPantallaPrincipal()
+                }else if (user.rol == "alumno") {
+                    navegarPantallaPrincipal()
+                }
             } else {
                 Toast.makeText(this, "Error obteniendo datos del usuario", Toast.LENGTH_SHORT).show()
             }

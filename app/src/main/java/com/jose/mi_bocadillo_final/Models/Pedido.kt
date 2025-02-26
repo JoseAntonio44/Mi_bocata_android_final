@@ -1,9 +1,10 @@
 package com.jose.mi_bocadillo_final.Models
 
 data class Pedido(
-    val usuarioId: String,
-    val bocadilloId: String,
+    val id: String,
     val descripcion: String,
+    val fecha: String,
     val precio: Double,
-    val fecha: String
+    val usuarioId: String ,
+    val bocadilloId: String
 )

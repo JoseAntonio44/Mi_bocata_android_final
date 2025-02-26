@@ -14,11 +14,21 @@ class AuthManager {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.d("Auth", "Inicio de sesión exitoso: ${auth.currentUser?.email}")
                     onResult(true, auth.currentUser?.email)
                 } else {
                     Log.e("Auth", "Error en el inicio de sesión", task.exception)
                     onResult(false, task.exception?.message)
+                }
+            }
+    }
+
+    fun guardarUsuario(usuario: Usuario) {
+        auth.createUserWithEmailAndPassword(usuario.email, usuario.password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("Auth", "Usuario creado: ${auth.currentUser?.email}")
+                } else {
+                    Log.e("Auth", "Error al crear el usuario", task.exception)
                 }
             }
     }

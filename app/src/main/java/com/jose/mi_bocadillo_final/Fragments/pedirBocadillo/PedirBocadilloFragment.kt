@@ -1,6 +1,7 @@
 package com.jose.mi_bocadillo_final.Fragments.pedirBocadillo
 
 import PedirBocadilloViewModel
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.jose.mi_bocadillo_final.AuthManager
+import com.jose.mi_bocadillo_final.MainActivity
 import com.jose.mi_bocadillo_final.databinding.FragmentPedirBocadilloBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -32,6 +35,8 @@ class PedirBocadilloFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pedirBocadilloViewModel.fetchBocadillos()
 
+        val authManager = AuthManager()
+
         val nombreBocadilloFrio = binding.nombreFrio
         val precioBocadilloFrio = binding.precioFrio
         val botonPedirFrio = binding.botonPedirFrio
@@ -42,9 +47,17 @@ class PedirBocadilloFragment : Fragment() {
         val mensaje = binding.mensajePedido
         val botonBorrarMensaje = binding.botonBorrarMensaje
 
+        val botonCerrarSesion = binding.botonCerrarSesion
+
         // Obtener el día actual en formato "lunes", "martes", etc.
         val diaActual = SimpleDateFormat("EEEE", Locale("es", "ES")).format(Date()).lowercase()
 
+
+        botonCerrarSesion.setOnClickListener {
+            authManager.cerrarSesion()
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intent)
+        }
 
         pedirBocadilloViewModel.bocadillos.observe(viewLifecycleOwner, Observer { bocadillos ->
             if (bocadillos != null && bocadillos.isNotEmpty()) {

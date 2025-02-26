@@ -9,6 +9,19 @@
 
     >
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/botonCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#EA0B0B"
+        android:text="Cerrar Sesión"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/botonPedirCaliente"
         android:layout_width="350dp"
@@ -42,7 +55,7 @@
     <View
         android:id="@+id/containerDetallesFrio"
         android:layout_width="0dp"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
@@ -59,15 +72,17 @@
         android:layout_marginTop="24dp"
         android:text="Precio"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/containerDetallesFrio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreFrio" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreFrio"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/containerDetallesCaliente"
         android:layout_width="0dp"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
@@ -84,10 +99,12 @@
         android:layout_marginTop="24dp"
         android:text="Precio"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/containerDetallesCaliente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreCaliente" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreCaliente"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/nombreCaliente"

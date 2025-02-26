@@ -19,6 +19,9 @@ interface ApiService {
     @POST("Pedidos.json")
     suspend fun realizarPedido(@Body pedido: Pedido): Response<Pedido>
 
+    @GET("Pedidos.json")
+    suspend fun getPedidos(): Map<String, Pedido>
+
 
 
 }

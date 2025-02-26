@@ -29,21 +29,13 @@ class PantallaAlumno : AppCompatActivity() {
 
         authManager = AuthManager()
 
-        val user = binding.user
-
-        user.text = authManager.obtenerUsuarioActual()?.email ?: "Usuario no autenticado"
 
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val logoutButton = findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.botonCerrarSesion)
 
-        logoutButton.setOnClickListener {
-            authManager.cerrarSesion()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+
 
         val navView: BottomNavigationView = binding.bottomNavigationView
 

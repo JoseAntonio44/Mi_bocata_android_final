@@ -51,11 +51,12 @@ class PedirBocadilloViewModel : ViewModel() {
         val usuario = AuthManager().obtenerUsuarioActual()
         if (usuario != null) {
             val pedido = Pedido(
+                id = UUID.randomUUID().toString(),
                 usuarioId = usuario.uid,
                 bocadilloId = bocadillo.id,
                 descripcion = bocadillo.descripcion,
                 precio = bocadillo.coste,
-                fecha = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+                fecha = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
             )
 
             viewModelScope.launch {
