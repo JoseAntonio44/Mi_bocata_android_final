@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_pedir_bocadillo" />
     <fragment
         android:id="@+id/nav_bocatas"
-        android:name="com.jose.mi_bocadillo_final.Fragments.listaBocadillos.ListaBocadillosFragment"
+        android:name="com.jose.mi_bocadillo_final.Fragments.bocadillosSemana.ListaBocadillosFragment"
         android:label="ListaBocadillosFragment" />
     <fragment
         android:id="@+id/nav_pedidos"
