@@ -10,8 +10,8 @@
         android:id="@+id/containerCurso"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="52dp"
         android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -30,10 +30,11 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         android:text="Curso:"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerCorreo" />
 
@@ -41,8 +42,8 @@
         android:id="@+id/containerCorreo"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="52dp"
         android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -50,10 +51,11 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:text="Email:"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerApellidos" />
 
@@ -72,8 +74,8 @@
         android:id="@+id/containerApellidos"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="52dp"
         android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -81,10 +83,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Apellidos:"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerNombre" />
 
@@ -113,8 +116,8 @@
         android:id="@+id/containerNombre"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="52dp"
         android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -122,10 +125,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         android:text="Nombre:"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 

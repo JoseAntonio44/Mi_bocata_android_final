@@ -3,6 +3,7 @@ package com.jose.mi_bocadillo_final.PantallaAdmin
 import UsuarioAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,17 +29,25 @@ class PantallaAdmin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityPantallaAdminBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
 
-        // Configurar RecyclerView
-        adapter = UsuarioAdapter(emptyList()) // Se actualizará más adelante con los datos
+        adapter = UsuarioAdapter(emptyList(), clickEliminar = { usuario ->
+            usuarioViewModel.eliminarUsuario(usuario.email) // Pasa el email
+        }, clickEditar = { usuario ->
+            // Lógica para editar usuario
+        })
+
         binding.listaUsuarios.layoutManager = LinearLayoutManager(this)
         binding.listaUsuarios.adapter = adapter
 
-        // Observar cambios en la lista de usuarios
+
         usuarioViewModel.usuarios.observe(this, Observer { usuarios ->
             adapter.actualizarLista(usuarios ?: emptyList())
+        })
+        usuarioViewModel.error.observe(this, Observer { error ->
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         })
 
         binding.botonCerrarSesion.setOnClickListener {
@@ -47,7 +56,6 @@ class PantallaAdmin : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
 
         usuarioViewModel.cargarUsuarios()
 

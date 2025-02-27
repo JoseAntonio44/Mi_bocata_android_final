@@ -17,8 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:title=""
-        app:titleTextColor="@color/black"
+        android:visibility="gone"
         tools:ignore="MissingConstraints"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

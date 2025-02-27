@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         val biometricButton = binding.botonHuella
 
 
-        // Verificar si hay sesión activa
         if (authManager.sesionActiva()) {
             val currentUser = authManager.obtenerUsuarioActual()
             if (currentUser != null) {

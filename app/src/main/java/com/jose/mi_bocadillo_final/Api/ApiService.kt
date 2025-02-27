@@ -3,9 +3,9 @@ package com.jose.mi_bocadillo_final.Api
 import com.jose.mi_bocadillo_final.Models.Bocadillo
 import com.jose.mi_bocadillo_final.Models.Pedido
 import com.jose.mi_bocadillo_final.Models.Usuario
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -22,6 +22,7 @@ interface ApiService {
     @GET("Pedidos.json")
     suspend fun getPedidos(): Map<String, Pedido>
 
-
+    @DELETE("Usuarios/{id}.json")
+    suspend fun eliminarUsuario(@retrofit2.http.Path("id") id: String): Response<Void>
 
 }

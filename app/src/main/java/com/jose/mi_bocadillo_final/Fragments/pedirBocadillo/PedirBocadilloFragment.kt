@@ -49,7 +49,6 @@ class PedirBocadilloFragment : Fragment() {
 
         val botonCerrarSesion = binding.botonCerrarSesion
 
-        // Obtener el día actual en formato "lunes", "martes", etc.
         val diaActual = SimpleDateFormat("EEEE", Locale("es", "ES")).format(Date()).lowercase()
 
 
@@ -66,7 +65,6 @@ class PedirBocadilloFragment : Fragment() {
                 val bocadilloCaliente =
                     bocadillos.find { it.tipo == "caliente" && it.dia == diaActual }
 
-                // Mostrar información de los bocadillos
                 if (bocadilloFrio != null) {
                     nombreBocadilloFrio.text = bocadilloFrio.descripcion
                     precioBocadilloFrio.text = "Precio: ${bocadilloFrio.coste}€"
