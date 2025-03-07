@@ -39,10 +39,9 @@ class PantallaAdmin : AppCompatActivity() {
         adapter = UsuarioAdapter(emptyList(), clickEliminar = { usuario ->
             usuarioViewModel.eliminarUsuario(usuario.email) // Pasa el email
         }, clickEditar = { usuario ->
-
             mostrarFormularioAlumno(usuario)
-            // Lógica para editar usuario
-        })
+        },
+        )
 
         binding.listaUsuarios.layoutManager = LinearLayoutManager(this)
         binding.listaUsuarios.adapter = adapter
@@ -64,13 +63,15 @@ class PantallaAdmin : AppCompatActivity() {
 
         usuarioViewModel.cargarUsuarios()
 
+        binding.crearUsuario.setOnClickListener {
+            mostrarFormularioAlumno()
+        }
 
     }
 
     private fun mostrarFormularioAlumno(alumno: Usuario? = null) {
         val fragment = FormularioAlumnoFragment()
 
-        // Si estamos editando, pasar los datos del alumno al fragmento
         val bundle = Bundle()
         bundle.putString("nombre", alumno?.nombre)
         bundle.putString("apellidos", alumno?.apellidos)
@@ -81,14 +82,13 @@ class PantallaAdmin : AppCompatActivity() {
 
         fragment.arguments = bundle
 
-        // Mostrar el fragmento
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment) // Asegúrate de que 'container' es el id del contenedor de fragmentos en tu actividad
-        transaction.addToBackStack(null)  // Añadir a la pila de retroceso
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
 
-        // Asegurar que el fragmento está visible después de añadirse
-        supportFragmentManager.executePendingTransactions() // Espera a que el fragmento se añada completamente
+
+        supportFragmentManager.executePendingTransactions()
 
         val fragmentView = fragment.view
         fragmentView?.visibility = View.VISIBLE

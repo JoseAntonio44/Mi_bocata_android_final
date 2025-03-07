@@ -8,6 +8,8 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ApiService {
     @GET("Usuarios.json")
@@ -23,6 +25,13 @@ interface ApiService {
     suspend fun getPedidos(): Map<String, Pedido>
 
     @DELETE("Usuarios/{id}.json")
-    suspend fun eliminarUsuario(@retrofit2.http.Path("id") id: String): Response<Void>
+    suspend fun eliminarUsuario(@Path("id") id: String): Response<Void>
+
+    @POST("Usuarios.json")
+    suspend fun crearUsuario(@Body usuario: Usuario): Response<Usuario>
+
+    @PUT("Usuarios/{uid}.json")
+    suspend fun modificarUsuario(@Path("uid") id: String, @Body usuario: Usuario): Response<Usuario>
+
 
 }

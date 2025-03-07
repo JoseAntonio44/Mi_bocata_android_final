@@ -1,13 +1,21 @@
 package com.jose.mi_bocadillo_final
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.jose.mi_bocadillo_final.Models.Usuario
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences.PrefKeyEncryptionScheme
+import androidx.security.crypto.EncryptedSharedPreferences.PrefValueEncryptionScheme
 
-class AuthManager {
+
+
+class AuthManager() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val db: DatabaseReference = FirebaseDatabase.getInstance("https://proyectobocadillosandroid-default-rtdb.europe-west1.firebasedatabase.app/").reference
@@ -51,5 +59,7 @@ class AuthManager {
     fun obtenerUsuarioActual(): FirebaseUser? {
         return auth.currentUser
     }
+
+
 
 }
