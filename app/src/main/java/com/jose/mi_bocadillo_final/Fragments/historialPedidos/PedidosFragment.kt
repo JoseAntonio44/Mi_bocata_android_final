@@ -34,6 +34,7 @@ class PedidosFragment : Fragment() {
         binding.recyclerViewPedidos.layoutManager = LinearLayoutManager(context)
         pedidoAdapter = PedidoAdapter()
         binding.recyclerViewPedidos.adapter = pedidoAdapter
+        binding.totalGastado.text
 
         pedidoViewModel.pedidos.observe(viewLifecycleOwner, Observer { pedidos ->
             if (pedidos != null) {
@@ -41,6 +42,8 @@ class PedidosFragment : Fragment() {
             }
         })
 
+        pedidoViewModel.totalGastado.observe(viewLifecycleOwner, Observer { total ->
+            binding.totalGastado.text = "Total gastado: %.2f €".format(total)        })
         pedidoViewModel.cargarPedidos()
     }
 

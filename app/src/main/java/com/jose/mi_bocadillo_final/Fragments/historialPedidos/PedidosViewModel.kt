@@ -16,6 +16,10 @@ class PedidosViewModel : ViewModel() {
     private val _ultimoPedido = MutableLiveData<Pedido?>()
     val ultimoPedido: LiveData<Pedido?> get() = _ultimoPedido
 
+
+    private val _totalGastado = MutableLiveData<Double>()
+    val totalGastado: LiveData<Double> get() = _totalGastado
+
     private val authManager = AuthManager()
 
     //Metodo para cargar los pedidos del usuario autenticado
@@ -31,8 +35,10 @@ class PedidosViewModel : ViewModel() {
 
                     _pedidos.postValue(pedidosEncontrados)
 
-                    //Asignar el último pedido si existe
                     _ultimoPedido.postValue(pedidosEncontrados.firstOrNull())
+
+                    val total = pedidosEncontrados.sumOf { it.precio }
+                    _totalGastado.postValue(total)
                 } catch (e: Exception) {
                     _pedidos.postValue(null)
                     _ultimoPedido.postValue(null)
