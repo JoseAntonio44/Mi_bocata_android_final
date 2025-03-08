@@ -13,6 +13,9 @@ class PedidosViewModel : ViewModel() {
     private val _pedidos = MutableLiveData<List<Pedido>?>()
     val pedidos: LiveData<List<Pedido>?> get() = _pedidos
 
+    private val _ultimoPedido = MutableLiveData<Pedido?>()
+    val ultimoPedido: LiveData<Pedido?> get() = _ultimoPedido
+
     private val authManager = AuthManager()
 
     //Metodo para cargar los pedidos del usuario autenticado
@@ -22,10 +25,17 @@ class PedidosViewModel : ViewModel() {
             viewModelScope.launch {
                 try {
                     val response = RetrofitConnect.api.getPedidos()
-                    val pedidosEncontrados = response.filter {it.value.usuarioId == usuarioId }
-                    _pedidos.postValue(pedidosEncontrados.values.toList())
+                    val pedidosEncontrados = response.filter { it.value.usuarioId == usuarioId }
+                        .values
+                        .sortedByDescending { it.fecha }
+
+                    _pedidos.postValue(pedidosEncontrados)
+
+                    //Asignar el último pedido si existe
+                    _ultimoPedido.postValue(pedidosEncontrados.firstOrNull())
                 } catch (e: Exception) {
                     _pedidos.postValue(null)
+                    _ultimoPedido.postValue(null)
                 }
             }
         }

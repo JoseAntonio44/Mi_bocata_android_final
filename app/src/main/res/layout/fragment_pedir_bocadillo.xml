@@ -134,31 +134,28 @@
 
     <TextView
         android:id="@+id/mensajePedido"
-        android:layout_width="300dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerDetallesCaliente" />
 
     <Button
-        android:id="@+id/botonBorrarMensaje"
+        android:id="@+id/botonCancelarPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/material_dynamic_neutral30"
-        android:text="Cerrar"
-        android:visibility="gone"
+        android:text="Cancelar Pedido"
+        android:visibility="visible"
         app:cornerRadius="5sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mensajePedido"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.071" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

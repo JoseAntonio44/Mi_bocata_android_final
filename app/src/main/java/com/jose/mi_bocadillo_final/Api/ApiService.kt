@@ -33,5 +33,6 @@ interface ApiService {
     @PUT("Usuarios/{uid}.json")
     suspend fun modificarUsuario(@Path("uid") id: String, @Body usuario: Usuario): Response<Usuario>
 
-
+    @DELETE("Pedidos/{id}.json")
+    suspend fun cancelarPedido(@Path("id") id: String): Response<Void>
 }
